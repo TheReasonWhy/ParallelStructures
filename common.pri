@@ -1,0 +1,10 @@
+INCLUDEPATH += $$PWD/src
+HEADERS += $$PWD/src/parallel_set.hpp
+HEADERS += $$PWD/src/victim.h
+SOURCES += $$PWD/src/victim.cpp
+HEADERS += $$PWD/src/binary_tree.h
+SOURCES += $$PWD/src/binary_tree.cpp
+HEADERS += $$PWD/src/parallel_container.hpp
+HEADERS += $$PWD/src/parallel_queue.hpp
+HEADERS += $$PWD/src/lock_free_queue.hpp
+HEADERS += $$PWD/src/work_generator.h
