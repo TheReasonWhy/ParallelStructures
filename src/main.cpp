@@ -2,13 +2,21 @@
 #include<QDebug>
 #include "parallel_set.hpp"
 #include "parallel_queue.hpp"
-#include "victim.h"
 #include"threadpool.h"
 #include"parallel_container.hpp"
+#include<indexer.h>
 
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
+    indexer<16> ix;
+
+    if(ix.check_sum()){
+        qDebug()<< "SECTOR PRIZ !! !! !!" << endl;
+    }else{
+        qDebug()<< "NOPE !! !! !!" << endl;
+    }
+
 /*
     unsigned param = 7;
     auto V1 = std::make_unique<victim>(param);

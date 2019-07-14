@@ -61,8 +61,8 @@ public:
     }
 
     bool finish(){
-        std::chrono::seconds sec(2);
-        std::this_thread::sleep_for(sec);
+        //std::chrono::seconds sec(2);
+        //std::this_thread::sleep_for(sec);
         done.store(true);
         return true;
     }

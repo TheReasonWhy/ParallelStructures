@@ -1,6 +1,0 @@
-#ifndef BINARY_TREE_NODE_H
-#define BINARY_TREE_NODE_H
-
-
-
-#endif // BINARY_TREE_NODE_H

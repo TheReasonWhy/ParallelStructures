@@ -19,13 +19,12 @@ public:
     ~work_generator(){if(m_container){delete m_container;}}
     Work *create_work(){
         unsigned param = rand()%100;
-        sum_accum+=param;
+        accum_sum+=param;
         Callee *callee = new Callee(param);
         Work* result = new Work(std::move(callee));
         return result;
     }
     bool create_test_works(int test_number){
-        qDebug() << "Creating test works " << test_number<< endl;
         Work _w;
         for (int i=0;i<test_number;++i) {
             _w = *create_work();
@@ -36,12 +35,15 @@ public:
     }
     bool perform_test_works(){
         while (!m_container->is_empty()) {
-            qDebug() << "Popped " << m_container->pop().get()->call();
+            control_sum+=(m_container->pop().get()->call());
         }
         return true;
     }
-    static unsigned sum_accumulated(){
-        return sum_accum;
+    static unsigned get_accumulated_sum(){
+        return accum_sum;
+    }
+    static unsigned get_control_sum(){
+        return control_sum;
     }
     //template<typename Callee, template<typename>class Container>
 
@@ -58,12 +60,18 @@ public:
 
         while(!f_container.is_empty())
         {
-            f_container.pop().get()->get();
+            control_sum+=f_container.pop().get()->get();
         };
         return TP.finish();
     }
+    bool reset_control_sum(){
+        accum_sum = 0;
+        control_sum = 0;
+        return true;
+    }
 /**/
-    inline static unsigned sum_accum = 0;
+    inline static unsigned accum_sum = 0;
+    inline static unsigned control_sum = 0;
     inline static unsigned work_indexator = 0;
     parallel_stack<Work> *m_container;
 
