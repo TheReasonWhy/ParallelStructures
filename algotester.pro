@@ -9,7 +9,8 @@ SUBDIRS += \
     statistics_manager \
     Work_Generator \
     Sort_algorithms \
-    Parallel_layered_structure
+    Parallel_layered_structure \
+    Parallel_container_complex
 
 
 
