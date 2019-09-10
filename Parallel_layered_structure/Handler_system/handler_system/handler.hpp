@@ -19,8 +19,6 @@ public:
 };
 
 
-
-
 template<size_t UP_NUM,
         size_t MIDDLE_NUM,
         size_t LOW_NUM,
