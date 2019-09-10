@@ -32,164 +32,190 @@ COMPRESS      = gzip -9f
 DISTNAME      = algotester1.0.0
 DISTDIR = /home/ivan/algotester/.tmp/algotester1.0.0
 SUBTARGETS    =  \
-		sub-src \
-		sub-tests \
-		sub-parallel_structures \
-		sub-victim \
-		sub-non_parallel_structures \
-		sub-factory_abstract
+		sub-Parallel_structures \
+		sub-Non_parallel_structures \
+		sub-Timer \
+		sub-statistics_manager \
+		sub-Work_Generator \
+		sub-Sort_algorithms \
+		sub-Parallel_layered_structure
 
 
-sub-src-qmake_all:  FORCE
-	@test -d src/ || mkdir -p src/
-	cd src/ && $(QMAKE) -o Makefile /home/ivan/algotester/src/src.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
-	cd src/ && $(MAKE) -f Makefile qmake_all
-sub-src: FORCE
-	@test -d src/ || mkdir -p src/
-	cd src/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/src/src.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile
-sub-src-make_first: FORCE
-	@test -d src/ || mkdir -p src/
-	cd src/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/src/src.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile 
-sub-src-all: FORCE
-	@test -d src/ || mkdir -p src/
-	cd src/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/src/src.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile all
-sub-src-clean: FORCE
-	@test -d src/ || mkdir -p src/
-	cd src/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/src/src.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile clean
-sub-src-distclean: FORCE
-	@test -d src/ || mkdir -p src/
-	cd src/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/src/src.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile distclean
-sub-src-install_subtargets: FORCE
-	@test -d src/ || mkdir -p src/
-	cd src/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/src/src.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile install
-sub-src-uninstall_subtargets: FORCE
-	@test -d src/ || mkdir -p src/
-	cd src/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/src/src.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile uninstall
-sub-tests-qmake_all:  FORCE
-	@test -d tests/ || mkdir -p tests/
-	cd tests/ && $(QMAKE) -o Makefile /home/ivan/algotester/tests/tests.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
-	cd tests/ && $(MAKE) -f Makefile qmake_all
-sub-tests: FORCE
-	@test -d tests/ || mkdir -p tests/
-	cd tests/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/tests/tests.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile
-sub-tests-make_first: FORCE
-	@test -d tests/ || mkdir -p tests/
-	cd tests/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/tests/tests.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile 
-sub-tests-all: FORCE
-	@test -d tests/ || mkdir -p tests/
-	cd tests/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/tests/tests.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile all
-sub-tests-clean: FORCE
-	@test -d tests/ || mkdir -p tests/
-	cd tests/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/tests/tests.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile clean
-sub-tests-distclean: FORCE
-	@test -d tests/ || mkdir -p tests/
-	cd tests/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/tests/tests.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile distclean
-sub-tests-install_subtargets: FORCE
-	@test -d tests/ || mkdir -p tests/
-	cd tests/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/tests/tests.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile install
-sub-tests-uninstall_subtargets: FORCE
-	@test -d tests/ || mkdir -p tests/
-	cd tests/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/tests/tests.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile uninstall
-sub-parallel_structures-qmake_all:  FORCE
-	@test -d parallel_structures/ || mkdir -p parallel_structures/
-	cd parallel_structures/ && $(QMAKE) -o Makefile /home/ivan/algotester/parallel_structures/parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
-	cd parallel_structures/ && $(MAKE) -f Makefile qmake_all
-sub-parallel_structures: FORCE
-	@test -d parallel_structures/ || mkdir -p parallel_structures/
-	cd parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/parallel_structures/parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile
-sub-parallel_structures-make_first: FORCE
-	@test -d parallel_structures/ || mkdir -p parallel_structures/
-	cd parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/parallel_structures/parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile 
-sub-parallel_structures-all: FORCE
-	@test -d parallel_structures/ || mkdir -p parallel_structures/
-	cd parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/parallel_structures/parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile all
-sub-parallel_structures-clean: FORCE
-	@test -d parallel_structures/ || mkdir -p parallel_structures/
-	cd parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/parallel_structures/parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile clean
-sub-parallel_structures-distclean: FORCE
-	@test -d parallel_structures/ || mkdir -p parallel_structures/
-	cd parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/parallel_structures/parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile distclean
-sub-parallel_structures-install_subtargets: FORCE
-	@test -d parallel_structures/ || mkdir -p parallel_structures/
-	cd parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/parallel_structures/parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile install
-sub-parallel_structures-uninstall_subtargets: FORCE
-	@test -d parallel_structures/ || mkdir -p parallel_structures/
-	cd parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/parallel_structures/parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile uninstall
-sub-victim-qmake_all:  FORCE
-	@test -d victim/ || mkdir -p victim/
-	cd victim/ && $(QMAKE) -o Makefile /home/ivan/algotester/victim/victim.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
-	cd victim/ && $(MAKE) -f Makefile qmake_all
-sub-victim: FORCE
-	@test -d victim/ || mkdir -p victim/
-	cd victim/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/victim/victim.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile
-sub-victim-make_first: FORCE
-	@test -d victim/ || mkdir -p victim/
-	cd victim/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/victim/victim.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile 
-sub-victim-all: FORCE
-	@test -d victim/ || mkdir -p victim/
-	cd victim/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/victim/victim.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile all
-sub-victim-clean: FORCE
-	@test -d victim/ || mkdir -p victim/
-	cd victim/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/victim/victim.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile clean
-sub-victim-distclean: FORCE
-	@test -d victim/ || mkdir -p victim/
-	cd victim/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/victim/victim.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile distclean
-sub-victim-install_subtargets: FORCE
-	@test -d victim/ || mkdir -p victim/
-	cd victim/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/victim/victim.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile install
-sub-victim-uninstall_subtargets: FORCE
-	@test -d victim/ || mkdir -p victim/
-	cd victim/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/victim/victim.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile uninstall
-sub-non_parallel_structures-qmake_all:  FORCE
-	@test -d non_parallel_structures/ || mkdir -p non_parallel_structures/
-	cd non_parallel_structures/ && $(QMAKE) -o Makefile /home/ivan/algotester/non_parallel_structures/non_parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
-	cd non_parallel_structures/ && $(MAKE) -f Makefile qmake_all
-sub-non_parallel_structures: FORCE
-	@test -d non_parallel_structures/ || mkdir -p non_parallel_structures/
-	cd non_parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/non_parallel_structures/non_parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile
-sub-non_parallel_structures-make_first: FORCE
-	@test -d non_parallel_structures/ || mkdir -p non_parallel_structures/
-	cd non_parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/non_parallel_structures/non_parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile 
-sub-non_parallel_structures-all: FORCE
-	@test -d non_parallel_structures/ || mkdir -p non_parallel_structures/
-	cd non_parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/non_parallel_structures/non_parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile all
-sub-non_parallel_structures-clean: FORCE
-	@test -d non_parallel_structures/ || mkdir -p non_parallel_structures/
-	cd non_parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/non_parallel_structures/non_parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile clean
-sub-non_parallel_structures-distclean: FORCE
-	@test -d non_parallel_structures/ || mkdir -p non_parallel_structures/
-	cd non_parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/non_parallel_structures/non_parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile distclean
-sub-non_parallel_structures-install_subtargets: FORCE
-	@test -d non_parallel_structures/ || mkdir -p non_parallel_structures/
-	cd non_parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/non_parallel_structures/non_parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile install
-sub-non_parallel_structures-uninstall_subtargets: FORCE
-	@test -d non_parallel_structures/ || mkdir -p non_parallel_structures/
-	cd non_parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/non_parallel_structures/non_parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile uninstall
-sub-factory_abstract-qmake_all:  FORCE
-	@test -d factory_abstract/ || mkdir -p factory_abstract/
-	cd factory_abstract/ && $(QMAKE) -o Makefile /home/ivan/algotester/factory_abstract/factory_abstract.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
-	cd factory_abstract/ && $(MAKE) -f Makefile qmake_all
-sub-factory_abstract: FORCE
-	@test -d factory_abstract/ || mkdir -p factory_abstract/
-	cd factory_abstract/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/factory_abstract/factory_abstract.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile
-sub-factory_abstract-make_first: FORCE
-	@test -d factory_abstract/ || mkdir -p factory_abstract/
-	cd factory_abstract/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/factory_abstract/factory_abstract.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile 
-sub-factory_abstract-all: FORCE
-	@test -d factory_abstract/ || mkdir -p factory_abstract/
-	cd factory_abstract/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/factory_abstract/factory_abstract.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile all
-sub-factory_abstract-clean: FORCE
-	@test -d factory_abstract/ || mkdir -p factory_abstract/
-	cd factory_abstract/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/factory_abstract/factory_abstract.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile clean
-sub-factory_abstract-distclean: FORCE
-	@test -d factory_abstract/ || mkdir -p factory_abstract/
-	cd factory_abstract/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/factory_abstract/factory_abstract.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile distclean
-sub-factory_abstract-install_subtargets: FORCE
-	@test -d factory_abstract/ || mkdir -p factory_abstract/
-	cd factory_abstract/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/factory_abstract/factory_abstract.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile install
-sub-factory_abstract-uninstall_subtargets: FORCE
-	@test -d factory_abstract/ || mkdir -p factory_abstract/
-	cd factory_abstract/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/factory_abstract/factory_abstract.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile uninstall
+sub-Parallel_structures-qmake_all:  FORCE
+	@test -d Parallel_structures/ || mkdir -p Parallel_structures/
+	cd Parallel_structures/ && $(QMAKE) -o Makefile /home/ivan/algotester/Parallel_structures/Parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
+	cd Parallel_structures/ && $(MAKE) -f Makefile qmake_all
+sub-Parallel_structures: FORCE
+	@test -d Parallel_structures/ || mkdir -p Parallel_structures/
+	cd Parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Parallel_structures/Parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile
+sub-Parallel_structures-make_first: FORCE
+	@test -d Parallel_structures/ || mkdir -p Parallel_structures/
+	cd Parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Parallel_structures/Parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile 
+sub-Parallel_structures-all: FORCE
+	@test -d Parallel_structures/ || mkdir -p Parallel_structures/
+	cd Parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Parallel_structures/Parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile all
+sub-Parallel_structures-clean: FORCE
+	@test -d Parallel_structures/ || mkdir -p Parallel_structures/
+	cd Parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Parallel_structures/Parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile clean
+sub-Parallel_structures-distclean: FORCE
+	@test -d Parallel_structures/ || mkdir -p Parallel_structures/
+	cd Parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Parallel_structures/Parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile distclean
+sub-Parallel_structures-install_subtargets: FORCE
+	@test -d Parallel_structures/ || mkdir -p Parallel_structures/
+	cd Parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Parallel_structures/Parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile install
+sub-Parallel_structures-uninstall_subtargets: FORCE
+	@test -d Parallel_structures/ || mkdir -p Parallel_structures/
+	cd Parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Parallel_structures/Parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile uninstall
+sub-Non_parallel_structures-qmake_all:  FORCE
+	@test -d Non_parallel_structures/ || mkdir -p Non_parallel_structures/
+	cd Non_parallel_structures/ && $(QMAKE) -o Makefile /home/ivan/algotester/Non_parallel_structures/Non_parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
+	cd Non_parallel_structures/ && $(MAKE) -f Makefile qmake_all
+sub-Non_parallel_structures: FORCE
+	@test -d Non_parallel_structures/ || mkdir -p Non_parallel_structures/
+	cd Non_parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Non_parallel_structures/Non_parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile
+sub-Non_parallel_structures-make_first: FORCE
+	@test -d Non_parallel_structures/ || mkdir -p Non_parallel_structures/
+	cd Non_parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Non_parallel_structures/Non_parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile 
+sub-Non_parallel_structures-all: FORCE
+	@test -d Non_parallel_structures/ || mkdir -p Non_parallel_structures/
+	cd Non_parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Non_parallel_structures/Non_parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile all
+sub-Non_parallel_structures-clean: FORCE
+	@test -d Non_parallel_structures/ || mkdir -p Non_parallel_structures/
+	cd Non_parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Non_parallel_structures/Non_parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile clean
+sub-Non_parallel_structures-distclean: FORCE
+	@test -d Non_parallel_structures/ || mkdir -p Non_parallel_structures/
+	cd Non_parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Non_parallel_structures/Non_parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile distclean
+sub-Non_parallel_structures-install_subtargets: FORCE
+	@test -d Non_parallel_structures/ || mkdir -p Non_parallel_structures/
+	cd Non_parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Non_parallel_structures/Non_parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile install
+sub-Non_parallel_structures-uninstall_subtargets: FORCE
+	@test -d Non_parallel_structures/ || mkdir -p Non_parallel_structures/
+	cd Non_parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Non_parallel_structures/Non_parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile uninstall
+sub-Timer-qmake_all:  FORCE
+	@test -d Timer/ || mkdir -p Timer/
+	cd Timer/ && $(QMAKE) -o Makefile /home/ivan/algotester/Timer/Timer.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
+	cd Timer/ && $(MAKE) -f Makefile qmake_all
+sub-Timer: FORCE
+	@test -d Timer/ || mkdir -p Timer/
+	cd Timer/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Timer/Timer.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile
+sub-Timer-make_first: FORCE
+	@test -d Timer/ || mkdir -p Timer/
+	cd Timer/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Timer/Timer.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile 
+sub-Timer-all: FORCE
+	@test -d Timer/ || mkdir -p Timer/
+	cd Timer/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Timer/Timer.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile all
+sub-Timer-clean: FORCE
+	@test -d Timer/ || mkdir -p Timer/
+	cd Timer/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Timer/Timer.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile clean
+sub-Timer-distclean: FORCE
+	@test -d Timer/ || mkdir -p Timer/
+	cd Timer/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Timer/Timer.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile distclean
+sub-Timer-install_subtargets: FORCE
+	@test -d Timer/ || mkdir -p Timer/
+	cd Timer/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Timer/Timer.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile install
+sub-Timer-uninstall_subtargets: FORCE
+	@test -d Timer/ || mkdir -p Timer/
+	cd Timer/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Timer/Timer.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile uninstall
+sub-statistics_manager-qmake_all:  FORCE
+	@test -d statistics_manager/ || mkdir -p statistics_manager/
+	cd statistics_manager/ && $(QMAKE) -o Makefile /home/ivan/algotester/statistics_manager/statistics_manager.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
+	cd statistics_manager/ && $(MAKE) -f Makefile qmake_all
+sub-statistics_manager: FORCE
+	@test -d statistics_manager/ || mkdir -p statistics_manager/
+	cd statistics_manager/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/statistics_manager/statistics_manager.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile
+sub-statistics_manager-make_first: FORCE
+	@test -d statistics_manager/ || mkdir -p statistics_manager/
+	cd statistics_manager/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/statistics_manager/statistics_manager.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile 
+sub-statistics_manager-all: FORCE
+	@test -d statistics_manager/ || mkdir -p statistics_manager/
+	cd statistics_manager/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/statistics_manager/statistics_manager.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile all
+sub-statistics_manager-clean: FORCE
+	@test -d statistics_manager/ || mkdir -p statistics_manager/
+	cd statistics_manager/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/statistics_manager/statistics_manager.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile clean
+sub-statistics_manager-distclean: FORCE
+	@test -d statistics_manager/ || mkdir -p statistics_manager/
+	cd statistics_manager/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/statistics_manager/statistics_manager.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile distclean
+sub-statistics_manager-install_subtargets: FORCE
+	@test -d statistics_manager/ || mkdir -p statistics_manager/
+	cd statistics_manager/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/statistics_manager/statistics_manager.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile install
+sub-statistics_manager-uninstall_subtargets: FORCE
+	@test -d statistics_manager/ || mkdir -p statistics_manager/
+	cd statistics_manager/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/statistics_manager/statistics_manager.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile uninstall
+sub-Work_Generator-qmake_all:  FORCE
+	@test -d Work_Generator/ || mkdir -p Work_Generator/
+	cd Work_Generator/ && $(QMAKE) -o Makefile /home/ivan/algotester/Work_Generator/Work_Generator.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
+	cd Work_Generator/ && $(MAKE) -f Makefile qmake_all
+sub-Work_Generator: FORCE
+	@test -d Work_Generator/ || mkdir -p Work_Generator/
+	cd Work_Generator/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Work_Generator/Work_Generator.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile
+sub-Work_Generator-make_first: FORCE
+	@test -d Work_Generator/ || mkdir -p Work_Generator/
+	cd Work_Generator/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Work_Generator/Work_Generator.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile 
+sub-Work_Generator-all: FORCE
+	@test -d Work_Generator/ || mkdir -p Work_Generator/
+	cd Work_Generator/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Work_Generator/Work_Generator.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile all
+sub-Work_Generator-clean: FORCE
+	@test -d Work_Generator/ || mkdir -p Work_Generator/
+	cd Work_Generator/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Work_Generator/Work_Generator.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile clean
+sub-Work_Generator-distclean: FORCE
+	@test -d Work_Generator/ || mkdir -p Work_Generator/
+	cd Work_Generator/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Work_Generator/Work_Generator.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile distclean
+sub-Work_Generator-install_subtargets: FORCE
+	@test -d Work_Generator/ || mkdir -p Work_Generator/
+	cd Work_Generator/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Work_Generator/Work_Generator.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile install
+sub-Work_Generator-uninstall_subtargets: FORCE
+	@test -d Work_Generator/ || mkdir -p Work_Generator/
+	cd Work_Generator/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Work_Generator/Work_Generator.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile uninstall
+sub-Sort_algorithms-qmake_all:  FORCE
+	@test -d Sort_algorithms/ || mkdir -p Sort_algorithms/
+	cd Sort_algorithms/ && $(QMAKE) -o Makefile /home/ivan/algotester/Sort_algorithms/Sort_algorithms.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
+	cd Sort_algorithms/ && $(MAKE) -f Makefile qmake_all
+sub-Sort_algorithms: FORCE
+	@test -d Sort_algorithms/ || mkdir -p Sort_algorithms/
+	cd Sort_algorithms/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Sort_algorithms/Sort_algorithms.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile
+sub-Sort_algorithms-make_first: FORCE
+	@test -d Sort_algorithms/ || mkdir -p Sort_algorithms/
+	cd Sort_algorithms/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Sort_algorithms/Sort_algorithms.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile 
+sub-Sort_algorithms-all: FORCE
+	@test -d Sort_algorithms/ || mkdir -p Sort_algorithms/
+	cd Sort_algorithms/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Sort_algorithms/Sort_algorithms.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile all
+sub-Sort_algorithms-clean: FORCE
+	@test -d Sort_algorithms/ || mkdir -p Sort_algorithms/
+	cd Sort_algorithms/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Sort_algorithms/Sort_algorithms.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile clean
+sub-Sort_algorithms-distclean: FORCE
+	@test -d Sort_algorithms/ || mkdir -p Sort_algorithms/
+	cd Sort_algorithms/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Sort_algorithms/Sort_algorithms.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile distclean
+sub-Sort_algorithms-install_subtargets: FORCE
+	@test -d Sort_algorithms/ || mkdir -p Sort_algorithms/
+	cd Sort_algorithms/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Sort_algorithms/Sort_algorithms.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile install
+sub-Sort_algorithms-uninstall_subtargets: FORCE
+	@test -d Sort_algorithms/ || mkdir -p Sort_algorithms/
+	cd Sort_algorithms/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Sort_algorithms/Sort_algorithms.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile uninstall
+sub-Parallel_layered_structure-qmake_all:  FORCE
+	@test -d Parallel_layered_structure/ || mkdir -p Parallel_layered_structure/
+	cd Parallel_layered_structure/ && $(QMAKE) -o Makefile /home/ivan/algotester/Parallel_layered_structure/Parallel_layered_structure.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
+	cd Parallel_layered_structure/ && $(MAKE) -f Makefile qmake_all
+sub-Parallel_layered_structure: FORCE
+	@test -d Parallel_layered_structure/ || mkdir -p Parallel_layered_structure/
+	cd Parallel_layered_structure/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Parallel_layered_structure/Parallel_layered_structure.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile
+sub-Parallel_layered_structure-make_first: FORCE
+	@test -d Parallel_layered_structure/ || mkdir -p Parallel_layered_structure/
+	cd Parallel_layered_structure/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Parallel_layered_structure/Parallel_layered_structure.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile 
+sub-Parallel_layered_structure-all: FORCE
+	@test -d Parallel_layered_structure/ || mkdir -p Parallel_layered_structure/
+	cd Parallel_layered_structure/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Parallel_layered_structure/Parallel_layered_structure.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile all
+sub-Parallel_layered_structure-clean: FORCE
+	@test -d Parallel_layered_structure/ || mkdir -p Parallel_layered_structure/
+	cd Parallel_layered_structure/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Parallel_layered_structure/Parallel_layered_structure.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile clean
+sub-Parallel_layered_structure-distclean: FORCE
+	@test -d Parallel_layered_structure/ || mkdir -p Parallel_layered_structure/
+	cd Parallel_layered_structure/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Parallel_layered_structure/Parallel_layered_structure.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile distclean
+sub-Parallel_layered_structure-install_subtargets: FORCE
+	@test -d Parallel_layered_structure/ || mkdir -p Parallel_layered_structure/
+	cd Parallel_layered_structure/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Parallel_layered_structure/Parallel_layered_structure.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile install
+sub-Parallel_layered_structure-uninstall_subtargets: FORCE
+	@test -d Parallel_layered_structure/ || mkdir -p Parallel_layered_structure/
+	cd Parallel_layered_structure/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Parallel_layered_structure/Parallel_layered_structure.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile uninstall
 
 Makefile: algotester.pro ../Qt/5.12.1/gcc_64/mkspecs/linux-g++/qmake.conf ../Qt/5.12.1/gcc_64/mkspecs/features/spec_pre.prf \
 		../Qt/5.12.1/gcc_64/mkspecs/common/unix.conf \
@@ -569,56 +595,62 @@ algotester.pro:
 qmake: FORCE
 	@$(QMAKE) -o Makefile algotester.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
 
-qmake_all: sub-src-qmake_all sub-tests-qmake_all sub-parallel_structures-qmake_all sub-victim-qmake_all sub-non_parallel_structures-qmake_all sub-factory_abstract-qmake_all FORCE
+qmake_all: sub-Parallel_structures-qmake_all sub-Non_parallel_structures-qmake_all sub-Timer-qmake_all sub-statistics_manager-qmake_all sub-Work_Generator-qmake_all sub-Sort_algorithms-qmake_all sub-Parallel_layered_structure-qmake_all FORCE
 
-make_first: sub-src-make_first sub-tests-make_first sub-parallel_structures-make_first sub-victim-make_first sub-non_parallel_structures-make_first sub-factory_abstract-make_first  FORCE
-all: sub-src-all sub-tests-all sub-parallel_structures-all sub-victim-all sub-non_parallel_structures-all sub-factory_abstract-all  FORCE
-clean: sub-src-clean sub-tests-clean sub-parallel_structures-clean sub-victim-clean sub-non_parallel_structures-clean sub-factory_abstract-clean  FORCE
-distclean: sub-src-distclean sub-tests-distclean sub-parallel_structures-distclean sub-victim-distclean sub-non_parallel_structures-distclean sub-factory_abstract-distclean  FORCE
+make_first: sub-Parallel_structures-make_first sub-Non_parallel_structures-make_first sub-Timer-make_first sub-statistics_manager-make_first sub-Work_Generator-make_first sub-Sort_algorithms-make_first sub-Parallel_layered_structure-make_first  FORCE
+all: sub-Parallel_structures-all sub-Non_parallel_structures-all sub-Timer-all sub-statistics_manager-all sub-Work_Generator-all sub-Sort_algorithms-all sub-Parallel_layered_structure-all  FORCE
+clean: sub-Parallel_structures-clean sub-Non_parallel_structures-clean sub-Timer-clean sub-statistics_manager-clean sub-Work_Generator-clean sub-Sort_algorithms-clean sub-Parallel_layered_structure-clean  FORCE
+distclean: sub-Parallel_structures-distclean sub-Non_parallel_structures-distclean sub-Timer-distclean sub-statistics_manager-distclean sub-Work_Generator-distclean sub-Sort_algorithms-distclean sub-Parallel_layered_structure-distclean  FORCE
 	-$(DEL_FILE) Makefile
 	-$(DEL_FILE) .qmake.stash
-install_subtargets: sub-src-install_subtargets sub-tests-install_subtargets sub-parallel_structures-install_subtargets sub-victim-install_subtargets sub-non_parallel_structures-install_subtargets sub-factory_abstract-install_subtargets FORCE
-uninstall_subtargets: sub-src-uninstall_subtargets sub-tests-uninstall_subtargets sub-parallel_structures-uninstall_subtargets sub-victim-uninstall_subtargets sub-non_parallel_structures-uninstall_subtargets sub-factory_abstract-uninstall_subtargets FORCE
+install_subtargets: sub-Parallel_structures-install_subtargets sub-Non_parallel_structures-install_subtargets sub-Timer-install_subtargets sub-statistics_manager-install_subtargets sub-Work_Generator-install_subtargets sub-Sort_algorithms-install_subtargets sub-Parallel_layered_structure-install_subtargets FORCE
+uninstall_subtargets: sub-Parallel_structures-uninstall_subtargets sub-Non_parallel_structures-uninstall_subtargets sub-Timer-uninstall_subtargets sub-statistics_manager-uninstall_subtargets sub-Work_Generator-uninstall_subtargets sub-Sort_algorithms-uninstall_subtargets sub-Parallel_layered_structure-uninstall_subtargets FORCE
 
-sub-src-check:
-	@test -d src/ || mkdir -p src/
-	cd src/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/src/src.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile check
-sub-tests-check:
-	@test -d tests/ || mkdir -p tests/
-	cd tests/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/tests/tests.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile check
-sub-parallel_structures-check:
-	@test -d parallel_structures/ || mkdir -p parallel_structures/
-	cd parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/parallel_structures/parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile check
-sub-victim-check:
-	@test -d victim/ || mkdir -p victim/
-	cd victim/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/victim/victim.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile check
-sub-non_parallel_structures-check:
-	@test -d non_parallel_structures/ || mkdir -p non_parallel_structures/
-	cd non_parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/non_parallel_structures/non_parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile check
-sub-factory_abstract-check:
-	@test -d factory_abstract/ || mkdir -p factory_abstract/
-	cd factory_abstract/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/factory_abstract/factory_abstract.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile check
-check: sub-src-check sub-tests-check sub-parallel_structures-check sub-victim-check sub-non_parallel_structures-check sub-factory_abstract-check
+sub-Parallel_structures-check:
+	@test -d Parallel_structures/ || mkdir -p Parallel_structures/
+	cd Parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Parallel_structures/Parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile check
+sub-Non_parallel_structures-check:
+	@test -d Non_parallel_structures/ || mkdir -p Non_parallel_structures/
+	cd Non_parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Non_parallel_structures/Non_parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile check
+sub-Timer-check:
+	@test -d Timer/ || mkdir -p Timer/
+	cd Timer/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Timer/Timer.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile check
+sub-statistics_manager-check:
+	@test -d statistics_manager/ || mkdir -p statistics_manager/
+	cd statistics_manager/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/statistics_manager/statistics_manager.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile check
+sub-Work_Generator-check:
+	@test -d Work_Generator/ || mkdir -p Work_Generator/
+	cd Work_Generator/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Work_Generator/Work_Generator.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile check
+sub-Sort_algorithms-check:
+	@test -d Sort_algorithms/ || mkdir -p Sort_algorithms/
+	cd Sort_algorithms/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Sort_algorithms/Sort_algorithms.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile check
+sub-Parallel_layered_structure-check:
+	@test -d Parallel_layered_structure/ || mkdir -p Parallel_layered_structure/
+	cd Parallel_layered_structure/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Parallel_layered_structure/Parallel_layered_structure.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile check
+check: sub-Parallel_structures-check sub-Non_parallel_structures-check sub-Timer-check sub-statistics_manager-check sub-Work_Generator-check sub-Sort_algorithms-check sub-Parallel_layered_structure-check
 
-sub-src-benchmark:
-	@test -d src/ || mkdir -p src/
-	cd src/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/src/src.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile benchmark
-sub-tests-benchmark:
-	@test -d tests/ || mkdir -p tests/
-	cd tests/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/tests/tests.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile benchmark
-sub-parallel_structures-benchmark:
-	@test -d parallel_structures/ || mkdir -p parallel_structures/
-	cd parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/parallel_structures/parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile benchmark
-sub-victim-benchmark:
-	@test -d victim/ || mkdir -p victim/
-	cd victim/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/victim/victim.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile benchmark
-sub-non_parallel_structures-benchmark:
-	@test -d non_parallel_structures/ || mkdir -p non_parallel_structures/
-	cd non_parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/non_parallel_structures/non_parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile benchmark
-sub-factory_abstract-benchmark:
-	@test -d factory_abstract/ || mkdir -p factory_abstract/
-	cd factory_abstract/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/factory_abstract/factory_abstract.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile benchmark
-benchmark: sub-src-benchmark sub-tests-benchmark sub-parallel_structures-benchmark sub-victim-benchmark sub-non_parallel_structures-benchmark sub-factory_abstract-benchmark
+sub-Parallel_structures-benchmark:
+	@test -d Parallel_structures/ || mkdir -p Parallel_structures/
+	cd Parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Parallel_structures/Parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile benchmark
+sub-Non_parallel_structures-benchmark:
+	@test -d Non_parallel_structures/ || mkdir -p Non_parallel_structures/
+	cd Non_parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Non_parallel_structures/Non_parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile benchmark
+sub-Timer-benchmark:
+	@test -d Timer/ || mkdir -p Timer/
+	cd Timer/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Timer/Timer.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile benchmark
+sub-statistics_manager-benchmark:
+	@test -d statistics_manager/ || mkdir -p statistics_manager/
+	cd statistics_manager/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/statistics_manager/statistics_manager.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile benchmark
+sub-Work_Generator-benchmark:
+	@test -d Work_Generator/ || mkdir -p Work_Generator/
+	cd Work_Generator/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Work_Generator/Work_Generator.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile benchmark
+sub-Sort_algorithms-benchmark:
+	@test -d Sort_algorithms/ || mkdir -p Sort_algorithms/
+	cd Sort_algorithms/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Sort_algorithms/Sort_algorithms.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile benchmark
+sub-Parallel_layered_structure-benchmark:
+	@test -d Parallel_layered_structure/ || mkdir -p Parallel_layered_structure/
+	cd Parallel_layered_structure/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Parallel_layered_structure/Parallel_layered_structure.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile benchmark
+benchmark: sub-Parallel_structures-benchmark sub-Non_parallel_structures-benchmark sub-Timer-benchmark sub-statistics_manager-benchmark sub-Work_Generator-benchmark sub-Sort_algorithms-benchmark sub-Parallel_layered_structure-benchmark
 install:install_subtargets  FORCE
 
 uninstall: uninstall_subtargets FORCE
@@ -628,31 +660,35 @@ FORCE:
 dist: distdir FORCE
 	(cd `dirname $(DISTDIR)` && $(TAR) $(DISTNAME).tar $(DISTNAME) && $(COMPRESS) $(DISTNAME).tar) && $(MOVE) `dirname $(DISTDIR)`/$(DISTNAME).tar.gz . && $(DEL_FILE) -r $(DISTDIR)
 
-distdir: sub-src-distdir sub-tests-distdir sub-parallel_structures-distdir sub-victim-distdir sub-non_parallel_structures-distdir sub-factory_abstract-distdir FORCE
+distdir: sub-Parallel_structures-distdir sub-Non_parallel_structures-distdir sub-Timer-distdir sub-statistics_manager-distdir sub-Work_Generator-distdir sub-Sort_algorithms-distdir sub-Parallel_layered_structure-distdir FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents ../Qt/5.12.1/gcc_64/mkspecs/features/spec_pre.prf ../Qt/5.12.1/gcc_64/mkspecs/common/unix.conf ../Qt/5.12.1/gcc_64/mkspecs/common/linux.conf ../Qt/5.12.1/gcc_64/mkspecs/common/sanitize.conf ../Qt/5.12.1/gcc_64/mkspecs/common/gcc-base.conf ../Qt/5.12.1/gcc_64/mkspecs/common/gcc-base-unix.conf ../Qt/5.12.1/gcc_64/mkspecs/common/g++-base.conf ../Qt/5.12.1/gcc_64/mkspecs/common/g++-unix.conf ../Qt/5.12.1/gcc_64/mkspecs/qconfig.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_3danimation.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_3danimation_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_3dcore.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_3dcore_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_3dextras.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_3dextras_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_3dinput.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_3dinput_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_3dlogic.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_3dlogic_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_3dquick.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_3dquick_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_3dquickanimation.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_3dquickanimation_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_3dquickextras.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_3dquickextras_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_3dquickinput.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_3dquickinput_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_3dquickrender.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_3dquickrender_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_3dquickscene2d.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_3dquickscene2d_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_3drender.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_3drender_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_accessibility_support_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_bluetooth.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_bluetooth_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_bootstrap_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_charts.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_charts_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_concurrent.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_concurrent_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_core.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_core_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_datavisualization.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_datavisualization_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_dbus.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_dbus_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_designer.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_designer_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_designercomponents_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_devicediscovery_support_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_edid_support_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_egl_support_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_eglfs_kms_support_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_eglfsdeviceintegration_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_eventdispatcher_support_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_fb_support_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_fontdatabase_support_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_gamepad.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_gamepad_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_glx_support_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_gui.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_gui_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_help.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_help_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_input_support_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_kms_support_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_linuxaccessibility_support_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_location.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_location_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_multimedia.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_multimedia_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_multimediagsttools_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_multimediawidgets.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_multimediawidgets_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_network.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_network_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_networkauth.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_networkauth_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_nfc.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_nfc_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_opengl.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_opengl_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_openglextensions.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_openglextensions_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_packetprotocol_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_platformcompositor_support_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_positioning.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_positioning_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_positioningquick.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_positioningquick_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_printsupport.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_printsupport_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_purchasing.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_purchasing_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_qml.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_qml_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_qmldebug_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_qmldevtools_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_qmltest.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_qmltest_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_quick.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_quick_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_quickcontrols2.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_quickcontrols2_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_quickparticles_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_quickshapes_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_quicktemplates2_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_quickwidgets.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_quickwidgets_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_remoteobjects.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_remoteobjects_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_repparser.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_repparser_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_script.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_script_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_scripttools.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_scripttools_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_scxml.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_scxml_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_sensors.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_sensors_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_serialbus.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_serialbus_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_serialport.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_serialport_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_service_support_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_sql.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_sql_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_svg.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_svg_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_testlib.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_testlib_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_texttospeech.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_texttospeech_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_theme_support_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_uiplugin.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_uitools.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_uitools_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_virtualkeyboard.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_virtualkeyboard_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_waylandclient.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_waylandclient_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_waylandcompositor.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_waylandcompositor_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_webchannel.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_webchannel_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_webengine.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_webengine_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_webenginecore.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_webenginecore_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_webenginecoreheaders_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_webenginewidgets.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_webenginewidgets_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_websockets.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_websockets_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_webview.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_webview_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_widgets.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_widgets_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_x11extras.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_x11extras_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_xml.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_xml_private.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_xmlpatterns.pri ../Qt/5.12.1/gcc_64/mkspecs/modules/qt_lib_xmlpatterns_private.pri ../Qt/5.12.1/gcc_64/mkspecs/features/qt_functions.prf ../Qt/5.12.1/gcc_64/mkspecs/features/qt_config.prf ../Qt/5.12.1/gcc_64/mkspecs/linux-g++/qmake.conf ../Qt/5.12.1/gcc_64/mkspecs/features/spec_post.prf .qmake.stash ../Qt/5.12.1/gcc_64/mkspecs/features/exclusive_builds.prf ../Qt/5.12.1/gcc_64/mkspecs/features/toolchain.prf ../Qt/5.12.1/gcc_64/mkspecs/features/default_pre.prf ../Qt/5.12.1/gcc_64/mkspecs/features/resolve_config.prf ../Qt/5.12.1/gcc_64/mkspecs/features/default_post.prf ../Qt/5.12.1/gcc_64/mkspecs/features/qml_debug.prf ../Qt/5.12.1/gcc_64/mkspecs/features/warn_on.prf ../Qt/5.12.1/gcc_64/mkspecs/features/qmake_use.prf ../Qt/5.12.1/gcc_64/mkspecs/features/file_copies.prf ../Qt/5.12.1/gcc_64/mkspecs/features/testcase_targets.prf ../Qt/5.12.1/gcc_64/mkspecs/features/exceptions.prf ../Qt/5.12.1/gcc_64/mkspecs/features/yacc.prf ../Qt/5.12.1/gcc_64/mkspecs/features/lex.prf algotester.pro $(DISTDIR)/
 
-sub-src-distdir: FORCE
-	@test -d src/ || mkdir -p src/
-	cd src/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/src/src.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/src
+sub-Parallel_structures-distdir: FORCE
+	@test -d Parallel_structures/ || mkdir -p Parallel_structures/
+	cd Parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Parallel_structures/Parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/Parallel_structures
 
-sub-tests-distdir: FORCE
-	@test -d tests/ || mkdir -p tests/
-	cd tests/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/tests/tests.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/tests
+sub-Non_parallel_structures-distdir: FORCE
+	@test -d Non_parallel_structures/ || mkdir -p Non_parallel_structures/
+	cd Non_parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Non_parallel_structures/Non_parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/Non_parallel_structures
 
-sub-parallel_structures-distdir: FORCE
-	@test -d parallel_structures/ || mkdir -p parallel_structures/
-	cd parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/parallel_structures/parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/parallel_structures
+sub-Timer-distdir: FORCE
+	@test -d Timer/ || mkdir -p Timer/
+	cd Timer/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Timer/Timer.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/Timer
 
-sub-victim-distdir: FORCE
-	@test -d victim/ || mkdir -p victim/
-	cd victim/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/victim/victim.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/victim
+sub-statistics_manager-distdir: FORCE
+	@test -d statistics_manager/ || mkdir -p statistics_manager/
+	cd statistics_manager/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/statistics_manager/statistics_manager.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/statistics_manager
 
-sub-non_parallel_structures-distdir: FORCE
-	@test -d non_parallel_structures/ || mkdir -p non_parallel_structures/
-	cd non_parallel_structures/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/non_parallel_structures/non_parallel_structures.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/non_parallel_structures
+sub-Work_Generator-distdir: FORCE
+	@test -d Work_Generator/ || mkdir -p Work_Generator/
+	cd Work_Generator/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Work_Generator/Work_Generator.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/Work_Generator
 
-sub-factory_abstract-distdir: FORCE
-	@test -d factory_abstract/ || mkdir -p factory_abstract/
-	cd factory_abstract/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/factory_abstract/factory_abstract.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/factory_abstract
+sub-Sort_algorithms-distdir: FORCE
+	@test -d Sort_algorithms/ || mkdir -p Sort_algorithms/
+	cd Sort_algorithms/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Sort_algorithms/Sort_algorithms.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/Sort_algorithms
+
+sub-Parallel_layered_structure-distdir: FORCE
+	@test -d Parallel_layered_structure/ || mkdir -p Parallel_layered_structure/
+	cd Parallel_layered_structure/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/ivan/algotester/Parallel_layered_structure/Parallel_layered_structure.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/Parallel_layered_structure
 

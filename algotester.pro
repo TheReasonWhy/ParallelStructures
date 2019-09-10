@@ -1,10 +1,16 @@
 TEMPLATE = subdirs
 
-SUBDIRS += \
-    src \
-    tests \
-    parallel_structures \
-    victim \
-    non_parallel_structures \
-    factory_abstract
 CONFIG += c++17 console
+
+SUBDIRS += \
+    Parallel_structures \
+    Non_parallel_structures \
+    Timer \
+    statistics_manager \
+    Work_Generator \
+    Sort_algorithms \
+    Parallel_layered_structure
+
+
+
+

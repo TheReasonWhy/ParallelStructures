@@ -1,0 +1,131 @@
+#ifndef WORK_GENERATOR_RESIZABLE_HPP
+#define WORK_GENERATOR_RESIZABLE_HPP
+#include"work.hpp"
+#include<array>
+
+template<size_t SIZE,
+    typename Memfunc,
+    Memfunc memfunc,
+    typename... Params>
+class work_generator_resizable;
+
+template<size_t SIZE,
+    typename Memfunc,
+    Memfunc memfunc,
+    typename Callee,
+    typename... Params>
+class work_generator_resizable<SIZE,Memfunc,memfunc,Callee,Params...>{
+public:
+    using Work = work<Memfunc,memfunc,Callee,Params...>;
+    work_generator_resizable(std::array<Callee,SIZE> &callees){
+        for (size_t i = 0;i<callees.size();++i) {
+            std::shared_ptr<Callee> C = std::make_shared<Callee>(callees.at(i));
+            Work w(C.get(),static_cast<unsigned>(i));
+            WORK_POOL.at(i)=std::move(w);
+        }
+    }
+    ~work_generator_resizable(){}
+
+    Work generate_work(unsigned index){
+        return WORK_POOL.at(index);
+    }
+    std::unique_ptr<Work> create_work(unsigned index){
+        std::unique_ptr<Work> result;
+        if(index < WORK_POOL.size()){
+            Work W = WORK_POOL.at(index);//копирование
+            result = std::make_unique<Work>(W);
+        }
+        return result;
+    }
+private:
+    std::array<Work,SIZE> WORK_POOL;
+};
+
+template<size_t SIZE,
+    typename Memfunc,
+    Memfunc memfunc,
+    typename Callee,
+    typename... Params>
+class work_generator_dynamic{
+public:
+    using Work = work<Memfunc,memfunc,Callee,Params...>;
+    work_generator_dynamic(std::array<Callee,SIZE> &callees){
+        for (size_t i = 0;i<callees.size();++i) {
+            std::shared_ptr<Callee> C = std::make_shared<Callee>(callees.at(i));
+            Work w(C.get(),static_cast<unsigned>(i));
+            WORK_POOL.at(i)=std::move(w);
+        }
+    }
+    ~work_generator_dynamic(){}
+
+    Work generate_work(unsigned index){
+        return WORK_POOL.at(index);
+    }
+    std::unique_ptr<Work> create_work(unsigned index,Params... params){
+        std::unique_ptr<Work> result = std::make_unique<Work>(W);
+        return result;
+    }
+
+};
+
+template<size_t SIZE,
+    typename Memfunc,
+    Memfunc memfunc,
+    typename Callee>
+class work_generator_resizable<SIZE,Memfunc,memfunc,Callee>{
+public:
+    using Work = work<Memfunc,memfunc,Callee>;
+    work_generator_resizable(std::array<Callee,SIZE> &callees){
+        for (size_t i = 0;i<callees.size();++i) {
+            std::shared_ptr<Callee> C = std::make_shared<Callee>(callees.at(i));
+            Work w(C.get(),static_cast<unsigned>(i));
+            WORK_POOL.at(i)=std::move(w);
+        }
+    }
+    ~work_generator_resizable(){}
+
+    Work generate_work(unsigned index){
+        return WORK_POOL.at(index);
+    }
+    std::unique_ptr<Work> create_work(unsigned index){
+        std::unique_ptr<Work> result;
+        if(index < WORK_POOL.size()){
+            Work W = WORK_POOL.at(index);//копирование
+            result = std::make_unique<Work>(W);
+        }
+        return result;
+    }
+private:
+    std::array<Work,SIZE> WORK_POOL;
+};
+
+template<typename Memfunc,
+    Memfunc memfunc,
+    typename Callee>
+class work_generator_resizable<Memfunc,memfunc,Callee>{
+public:
+    using Work = work<Memfunc,memfunc,Callee>;
+
+    work_generator_resizable(){}
+    ~work_generator_resizable(){}
+
+    static void add_callee(Callee *callee_,unsigned index){
+        WORK_POOL.push_back(Work(callee_,index));
+    }
+    static Work generate_work(unsigned index){
+        return WORK_POOL.at(index);
+    }
+    std::unique_ptr<Work> create_work(unsigned index){
+        std::unique_ptr<Work> result;
+        if(index < WORK_POOL.size()){
+            Work W = WORK_POOL.at(index);//копирование
+            result = std::make_unique<Work>(W);
+        }
+        return result;
+    }
+private:
+    inline static std::vector<Work> WORK_POOL;
+
+};
+
+#endif // WORK_GENERATOR_RESIZABLE_HPP

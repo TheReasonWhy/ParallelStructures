@@ -1,0 +1,12 @@
+#ifndef WORKABLES_GLOBAL_H
+#define WORKABLES_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(WORKABLES_LIBRARY)
+#  define WORKABLESSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define WORKABLESSHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // WORKABLES_GLOBAL_H

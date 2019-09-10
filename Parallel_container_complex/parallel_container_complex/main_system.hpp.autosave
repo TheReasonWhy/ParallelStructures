@@ -1,0 +1,102 @@
+#ifndef THRE
+#define MAIN_SYSTEM_HPP
+#include<work.hpp>
+#include<work_system.hpp>
+#include<chrono>
+
+//template<size_t LEVELS_NUM, size_t ROUTABLES_NUM, size_t ELEMENTS_NUM>
+template<size_t LEVELS_NUM, size_t ROUTABLES_NUM, size_t ELEMENTS_NUM>
+class thread_system{
+public:
+    using HANDLER_E = handler_element<LEVELS_NUM,ROUTABLES_NUM,ELEMENTS_NUM>;
+    using HANDLER_R = handler_routable<LEVELS_NUM,ROUTABLES_NUM,ELEMENTS_NUM>;
+    using HANDLER_M = handler_move<LEVELS_NUM,ROUTABLES_NUM,ELEMENTS_NUM>;
+
+    using WS = Work_system<LEVELS_NUM,ROUTABLES_NUM,ELEMENTS_NUM>;
+    using Work = work<decltype(&WS::process),&WS::process,WS>;
+    using ResultType = decltype (std::declval<Work>()());
+    using Packaged_type = typename std::packaged_task<ResultType()>;
+    using Future_type = typename std::future<ResultType>;
+    using Stack_task = parallel_stack_packaged<Packaged_type>;
+    using Stack_future = parallel_stack_packaged<Future_type>;
+
+    HANDLER_E m_handler_e;
+    HANDLER_R m_handler_r;
+    HANDLER_M m_handler_m;
+    std::vector<Stack_task> m_tasks;
+    std::vector<Stack_future> m_futures;
+    unsigned THREAD_NUM = std::thread::hardware_concurrency();
+    static thread_local unsigned THREAD_ID;
+    std::vector<std::thread> m_threads;
+    bool m_done;
+
+    thread_system():m_handler_e(HANDLER_E(0,0)),
+                m_handler_r(HANDLER_R(0,0)),
+                m_handler_m(HANDLER_M(1,154,0,0,0)),
+                m_work_sys(WS(THREAD_NUM)),
+                m_done(false){
+        for (unsigned i = 0;i<THREAD_NUM;++i) {
+            m_tasks.push_back(Stack_task());
+            m_futures.push_back(Stack_future());
+        }
+    }
+
+    ~thread_system(){
+        m_done=true;
+        finish();
+    }
+    unsigned get_sum_recursive(unsigned lvl,unsigned routable, unsigned element){
+        return WS::get_sum_recursive(lvl,routable,element);
+    }
+    void worker_thread(unsigned i){
+        THREAD_ID = i;
+        Packaged_type res;
+        while (!m_done) {
+            if(m_tasks.at(THREAD_ID).try_pop(res)){
+                res();
+            }
+        }
+    }
+    unsigned get_control_sum(unsigned lvl,unsigned routable, unsigned element){
+        for (unsigned i =0;i<THREAD_NUM;++i) {
+            Work w(lvl,routable,element);
+            m_tasks.at(i).push_back(w);
+        }
+        Future_type res;
+        unsigned CONTROL_SUM(0);
+        for (unsigned i =0;i<THREAD_NUM;++i) {
+            while(!m_futures.at(i).try_pop(res)){
+                CONTROL_SUM+=res;
+            }
+        }
+        return CONTROL_SUM;
+    }
+    bool start(){
+        m_done=false;
+        try {
+            for(size_t i=0;i<THREAD_NUM;++i){
+                qDebug() << i  << "THREAD " << endl;
+                m_threads.at(i)=std::move(std::thread(&thread_system::worker_thread,this, i));
+            }
+        } catch (...) {
+            finish();
+            throw;
+        }
+        return true;
+    }
+    void stop(){
+        m_done=true;
+    }
+    bool finish(){
+        for(size_t i=0;i<THREAD_NUM;++i){
+            if(m_threads.at(i).joinable()){
+                m_threads.at(i).join();
+                qDebug() << i  << "joined " << endl;
+            }
+        }
+        return true;
+    }
+    private:
+    WS m_work_sys;
+};
+#endif // MAIN_SYSTEM_HPP

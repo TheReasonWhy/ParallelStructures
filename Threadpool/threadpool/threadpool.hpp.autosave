@@ -1,0 +1,99 @@
+#ifndef THREADPOOL_H
+#define THREADPOOL_H
+#include "parallel_set_packaged.hpp"
+#include <threadpool_base.hpp>
+
+template<size_t NUM_THREADS, typename Work, template<typename>class Container>
+class threadpool_parallel_set : public threadpool_base<NUM_THREADS, Work,Container,threadpool_parallel_set<NUM_THREADS, Work,Container>>
+{
+
+    using ResultType = decltype (std::declval<Work>()());
+    using Packaged_type = std::packaged_task<ResultType()>;
+    using Set = parallel_set_packaged<Work, Container>;//parallel_set<victim, lock_free_queue>
+
+    static_assert (std::is_same_v<ResultType,std::invoke_result_t<Work> >,"sad but not true");
+
+    inline static thread_local unsigned my_index = 0;
+
+    void worker_thread(unsigned my_index_){
+        my_index = my_index_; //локальная статическая переменная !!!
+        qDebug() << "my_index " << my_index << endl;
+        while(!done){
+            run_pending_task();
+        }
+    }
+
+    bool pop_task_from_set(Packaged_type &task){
+        if(m_set){
+            return m_set->try_pop(task);
+        }else{
+            return false;
+        }
+    }
+public:
+
+    threadpool_parallel_set():
+        done(false),
+        m_set(new Set())
+        //m_joiner(m_threads)
+    {
+
+    }
+    ~threadpool_parallel_set(){if(m_set){delete m_set;}}
+    void run_pending_task(){
+        Packaged_type task;
+        if(pop_task_from_set(task)){
+            task();
+        }else{
+            std::this_thread::yield();
+        }
+    }
+    bool start(){
+        qDebug() << "START !!! " << endl;
+       unsigned const thread_count = std::thread::hardware_concurrency();
+        //unsigned const one_thread = 1;
+        try {
+            for(unsigned i=0;i<thread_count;++i){
+                m_threads.push_back(std::thread(&threadpool_parallel_set::worker_thread,this, i));
+            }
+        } catch (...) {
+            done = true;
+            throw;
+        }
+        return true;
+    }
+    bool finish(){
+        //qDebug() << "FINISH !!! " << endl;
+        //std::chrono::seconds sec(1);
+        //std::this_thread::sleep_for(sec);
+        done.store(true);
+        return true;
+    }
+    std::future<ResultType> submit(Work&& callee,unsigned index){
+        Packaged_type task(std::move(callee));
+        std::future<ResultType> res(task.get_future());
+        bool answer;
+        if(m_set){
+            answer = m_set->push(std::move(task),index);
+        }
+        if(answer){
+            return res;
+        }else{
+            return std::future<ResultType>();//пустая фьюча
+        }
+    }
+
+private:
+
+    std::atomic_bool done;
+    Set *m_set;
+    std::vector<std::thread> m_threads;
+    //join_threads m_joiner;
+};
+
+
+
+
+
+
+#endif // THREADPOOL_H

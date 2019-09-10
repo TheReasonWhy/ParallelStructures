@@ -1,0 +1,30 @@
+0 - level_index
+0.008995 - max_time
+0.008995 - min_time
+0.00224875 - average_time
+452.38 - execution_time
+0.008995 - aggregated_num
+1 - level_index
+0.007929 - max_time
+0.007929 - min_time
+0.00198225 - average_time
+452.492 - execution_time
+0.007929 - aggregated_num
+2 - level_index
+310.284 - max_time
+310.284 - min_time
+77.571 - average_time
+462.595 - execution_time
+310.284 - aggregated_num
+3 - level_index
+0.015589 - max_time
+0.015589 - min_time
+0.00389725 - average_time
+462.595 - execution_time
+0.015589 - aggregated_num
+ - TOTAL - 
+310.284 - max_time at thread2
+0.007929 - min_time at thread1
+19.3948 - average_time
+1830.06 - execution_time
+310.317 - aggregated_num
