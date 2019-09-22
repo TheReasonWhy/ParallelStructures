@@ -1,11 +1,13 @@
 #ifndef THREAD_SYSTEM_HPP
 #define THREAD_SYSTEM_HPP
 #include<work.hpp>
-#include<user_system.hpp>
 #include<chrono>
+#include<parallel_stack_packaged.hpp>
+#include<future>
+#include<user_system.hpp>
 
 //template<size_t LEVELS_NUM, size_t ROUTABLES_NUM, size_t ELEMENTS_NUM>
-template<size_t LEVELS_NUM, size_t ROUTABLES_NUM, size_t ELEMENTS_NUM>
+template<size_t UP_NUM, size_t MIDDLE_NUM, size_t LOW_NUM, size_t MOVABLE_NUM>
 class thread_system{
 public:
     struct join_threads{
@@ -21,7 +23,7 @@ public:
     }
     };
 
-    using WORK_SYSTEM = Work_system<LEVELS_NUM,ROUTABLES_NUM,ELEMENTS_NUM>;
+    using WORK_SYSTEM = Work_system<UP_NUM, MIDDLE_NUM, LOW_NUM, MOVABLE_NUM>;
     using USER_SYSTEM = user_system<WORK_SYSTEM>;
     using WORK = work<decltype(&WORK_SYSTEM::process),&WORK_SYSTEM::process,WORK_SYSTEM,unsigned>;
     using ResultType = decltype (std::declval<WORK>()());

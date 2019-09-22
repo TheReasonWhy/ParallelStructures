@@ -6,12 +6,12 @@
 #include<set>
 
 /**/
-template<size_t UP_NUM, size_t MIDDLE_NUM, size_t LOW_NUM, size_t MOVABLE_SIZE, template<size_t,size_t,size_t,size_t>class Derived >
+template<size_t UP_NUM, size_t MIDDLE_NUM, size_t LOW_NUM, size_t MOVABLE_NUM, template<size_t,size_t,size_t,size_t>class Derived >
 class Level_system{
 public:
-    using WORK_SYSTEM = Derived<UP_NUM,MIDDLE_NUM,LOW_NUM,MOVABLE_SIZE>;
+    using WORK_SYSTEM = Derived<UP_NUM,MIDDLE_NUM,LOW_NUM,MOVABLE_NUM>;
     using ResultType = unsigned;
-    using INTERVAL_SYSTEM = Interval_system<size_t,UP_NUM,MIDDLE_NUM,LOW_NUM,MOVABLE_SIZE>;
+    using INTERVAL_SYSTEM = Interval_system<size_t,UP_NUM,MIDDLE_NUM,LOW_NUM,MOVABLE_NUM>;
     using LAYERED_DATA = Layered_data<INTERVAL_SYSTEM>;
 
     INTERVAL_SYSTEM *m_interval_system;
@@ -222,8 +222,7 @@ public:
 
 
     Level_system(std::string const intervals_file_,
-                std::string const data_file_,
-                std::string const connections_file_):
+                std::string const data_file_):
                 m_interval_system(new INTERVAL_SYSTEM),
                 m_layered_data(new LAYERED_DATA){
 
@@ -251,52 +250,12 @@ public:
             m_lows.at(i).init(this, m_layered_data->get_low_data(i),i,m_interval_system->get_up_id_by_low(i), m_interval_system->get_middle_id_by_low(i));
         }
         qDebug()<< "m_lows() initialized " << endl;
-        init_connections(connections_file_);
         qDebug()<< "Level_system() initialized " << endl;
     }
 
     ~Level_system(){
         qDebug()<< "~Level_system() " << endl;
     }
-
-    void init_connections(std::string const connections_file){
-        std::ifstream file = std::ifstream(connections_file);
-        if (!file.good()) {
-            qDebug()<<connections_file.data()<< "not found!"<< endl;
-            throw std::exception();
-        }
-        unsigned up_id(0);
-        unsigned mid_id(0);
-        unsigned low_id(0);
-        size_t movable_iter(0);
-
-        unsigned target_up_id(0);
-        unsigned target_mid_id(0);
-        unsigned target_low_id(0);
-
-        std::string string_iter;
-        while(!(file.eof()||movable_iter>=MOVABLE_SIZE)){
-            getline(file,string_iter, ' ');
-            if(string_iter =="c"){
-            //c 3 8 1 20 57
-                file>>up_id;
-                file>>mid_id;
-                file>>low_id;
-                file>>target_up_id;
-                file>>target_mid_id;
-                file>>target_low_id;
-                size_t movable = m_interval_system->get_low_id(up_id,mid_id,low_id);
-                m_movables.at(movable_iter)=movable;
-                size_t movable_target = m_interval_system->get_low_id(target_up_id,target_mid_id,target_low_id);
-                Low_wrapper *w = &m_lows.at(movable_target);
-                m_lows.at(movable).set_arrow_lower(w);
-                getline(file,string_iter);
-                movable_iter++;
-                qDebug()<< "movable " << movable<< " movable_target "  << movable_target << endl;
-            }
-        }
-    }
-
 
     unsigned get_sum_recursive(unsigned up,unsigned mid, unsigned low){
         size_t absolute_id = m_interval_system->get_low_id(up,mid,low);
@@ -364,11 +323,35 @@ public:
     INTERVAL_SYSTEM *get_interval_system(){
         return m_interval_system;
     }
-
+    void set_connection(unsigned up_id,unsigned mid_id,unsigned low_id,
+                    unsigned target_up_id,unsigned target_mid_id,unsigned target_low_id){
+          size_t movable = m_interval_system->get_low_id(up_id,mid_id,low_id);
+          size_t movable_target = m_interval_system->get_low_id(target_up_id,target_mid_id,target_low_id);
+          Low_wrapper *w = &m_lows.at(movable_target);
+          m_lows.at(movable).set_arrow_lower(w);
+    }
     std::array<Low_wrapper,LOW_NUM> m_lows;
-    std::array<size_t,MOVABLE_SIZE> m_movables;
+    std::array<size_t,MOVABLE_NUM> m_movables;
     std::array<Middle_wrapper,MIDDLE_NUM> m_middles;
     std::array<Up_wrapper,UP_NUM> m_ups;
 };
 
 #endif // LEVEL_SYSTEM_HPP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

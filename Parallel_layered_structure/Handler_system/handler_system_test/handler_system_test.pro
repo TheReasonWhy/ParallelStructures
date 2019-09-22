@@ -7,3 +7,5 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 SOURCES +=  tst_handler_system_test.cpp
+DISTFILES += \
+    connections.txt

@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       -= gui
+QT       += gui
 
 TARGET = handler_system
 TEMPLATE = lib
@@ -25,11 +25,14 @@ SOURCES += \
 
 HEADERS += \
         handler_system.hpp \
-        handler.hpp
+        handler.hpp \
+    handler_wrapper.hpp
 unix {
     target.path = /usr/lib
     INSTALLS += target
 }
+
+
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../Level_system/level_system/release/ -llevel_system
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../Level_system/level_system/debug/ -llevel_system

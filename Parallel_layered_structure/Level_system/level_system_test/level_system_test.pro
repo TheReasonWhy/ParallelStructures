@@ -10,8 +10,7 @@ TEMPLATE = app
 
 SOURCES +=  tst_level_system_test.cpp
 
-DISTFILES += \
-    connections.txt
+
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../level_system/release/ -llevel_system
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../level_system/debug/ -llevel_system

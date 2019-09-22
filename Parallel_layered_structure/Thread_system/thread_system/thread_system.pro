@@ -29,3 +29,133 @@ unix {
     target.path = /usr/lib
     INSTALLS += target
 }
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../Handler_system/handler_system/release/ -lhandler_system
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../Handler_system/handler_system/debug/ -lhandler_system
+else:unix: LIBS += -L$$OUT_PWD/../../Handler_system/handler_system/ -lhandler_system
+
+INCLUDEPATH += $$PWD/../../Handler_system/handler_system
+DEPENDPATH += $$PWD/../../Handler_system/handler_system
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../Handler_system/handler_system/release/libhandler_system.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../Handler_system/handler_system/debug/libhandler_system.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../Handler_system/handler_system/release/handler_system.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../Handler_system/handler_system/debug/handler_system.lib
+else:unix: PRE_TARGETDEPS += $$OUT_PWD/../../Handler_system/handler_system/libhandler_system.a
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../Interval_system/interval_system/release/ -linterval_system
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../Interval_system/interval_system/debug/ -linterval_system
+else:unix: LIBS += -L$$OUT_PWD/../../Interval_system/interval_system/ -linterval_system
+
+INCLUDEPATH += $$PWD/../../Interval_system/interval_system
+DEPENDPATH += $$PWD/../../Interval_system/interval_system
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../Interval_system/interval_system/release/libinterval_system.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../Interval_system/interval_system/debug/libinterval_system.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../Interval_system/interval_system/release/interval_system.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../Interval_system/interval_system/debug/interval_system.lib
+else:unix: PRE_TARGETDEPS += $$OUT_PWD/../../Interval_system/interval_system/libinterval_system.a
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../../Work_Generator/Work_generator/work_generator/release/ -lwork_generator
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../../Work_Generator/Work_generator/work_generator/debug/ -lwork_generator
+else:unix: LIBS += -L$$OUT_PWD/../../../Work_Generator/Work_generator/work_generator/ -lwork_generator
+
+INCLUDEPATH += $$PWD/../../../Work_Generator/Work_generator/work_generator
+DEPENDPATH += $$PWD/../../../Work_Generator/Work_generator/work_generator
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../../Work_Generator/Work_generator/work_generator/release/libwork_generator.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../../Work_Generator/Work_generator/work_generator/debug/libwork_generator.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../../Work_Generator/Work_generator/work_generator/release/work_generator.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../../Work_Generator/Work_generator/work_generator/debug/work_generator.lib
+else:unix: PRE_TARGETDEPS += $$OUT_PWD/../../../Work_Generator/Work_generator/work_generator/libwork_generator.a
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../../statistics_manager/release/ -lstatistics_manager
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../../statistics_manager/debug/ -lstatistics_manager
+else:unix: LIBS += -L$$OUT_PWD/../../../statistics_manager/ -lstatistics_manager
+
+INCLUDEPATH += $$PWD/../../../statistics_manager
+DEPENDPATH += $$PWD/../../../statistics_manager
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../../statistics_manager/release/libstatistics_manager.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../../statistics_manager/debug/libstatistics_manager.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../../statistics_manager/release/statistics_manager.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../../statistics_manager/debug/statistics_manager.lib
+else:unix: PRE_TARGETDEPS += $$OUT_PWD/../../../statistics_manager/libstatistics_manager.a
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../Layered_data/layered_data/release/ -llayered_data
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../Layered_data/layered_data/debug/ -llayered_data
+else:unix: LIBS += -L$$OUT_PWD/../../Layered_data/layered_data/ -llayered_data
+
+INCLUDEPATH += $$PWD/../../Layered_data/layered_data
+DEPENDPATH += $$PWD/../../Layered_data/layered_data
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../Layered_data/layered_data/release/liblayered_data.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../Layered_data/layered_data/debug/liblayered_data.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../Layered_data/layered_data/release/layered_data.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../Layered_data/layered_data/debug/layered_data.lib
+else:unix: PRE_TARGETDEPS += $$OUT_PWD/../../Layered_data/layered_data/liblayered_data.a
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../Level_system/level_system/release/ -llevel_system
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../Level_system/level_system/debug/ -llevel_system
+else:unix: LIBS += -L$$OUT_PWD/../../Level_system/level_system/ -llevel_system
+
+INCLUDEPATH += $$PWD/../../Level_system/level_system
+DEPENDPATH += $$PWD/../../Level_system/level_system
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../Level_system/level_system/release/liblevel_system.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../Level_system/level_system/debug/liblevel_system.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../Level_system/level_system/release/level_system.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../Level_system/level_system/debug/level_system.lib
+else:unix: PRE_TARGETDEPS += $$OUT_PWD/../../Level_system/level_system/liblevel_system.a
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../User_system/user_system/release/ -luser_system
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../User_system/user_system/debug/ -luser_system
+else:unix: LIBS += -L$$OUT_PWD/../../User_system/user_system/ -luser_system
+
+INCLUDEPATH += $$PWD/../../User_system/user_system
+DEPENDPATH += $$PWD/../../User_system/user_system
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../User_system/user_system/release/libuser_system.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../User_system/user_system/debug/libuser_system.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../User_system/user_system/release/user_system.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../User_system/user_system/debug/user_system.lib
+else:unix: PRE_TARGETDEPS += $$OUT_PWD/../../User_system/user_system/libuser_system.a
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../../Parallel_structures/Parallel_binary_tree/parallel_binary_tree/release/ -lparallel_binary_tree
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../../Parallel_structures/Parallel_binary_tree/parallel_binary_tree/debug/ -lparallel_binary_tree
+else:unix: LIBS += -L$$OUT_PWD/../../../Parallel_structures/Parallel_binary_tree/parallel_binary_tree/ -lparallel_binary_tree
+
+INCLUDEPATH += $$PWD/../../../Parallel_structures/Parallel_binary_tree/parallel_binary_tree
+DEPENDPATH += $$PWD/../../../Parallel_structures/Parallel_binary_tree/parallel_binary_tree
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../../Parallel_structures/Parallel_binary_tree/parallel_binary_tree/release/libparallel_binary_tree.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../../Parallel_structures/Parallel_binary_tree/parallel_binary_tree/debug/libparallel_binary_tree.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../../Parallel_structures/Parallel_binary_tree/parallel_binary_tree/release/parallel_binary_tree.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../../Parallel_structures/Parallel_binary_tree/parallel_binary_tree/debug/parallel_binary_tree.lib
+else:unix: PRE_TARGETDEPS += $$OUT_PWD/../../../Parallel_structures/Parallel_binary_tree/parallel_binary_tree/libparallel_binary_tree.a
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../../Timer/timer/release/ -ltimer
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../../Timer/timer/debug/ -ltimer
+else:unix: LIBS += -L$$OUT_PWD/../../../Timer/timer/ -ltimer
+
+INCLUDEPATH += $$PWD/../../../Timer/timer
+DEPENDPATH += $$PWD/../../../Timer/timer
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../../Timer/timer/release/libtimer.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../../Timer/timer/debug/libtimer.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../../Timer/timer/release/timer.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../../Timer/timer/debug/timer.lib
+else:unix: PRE_TARGETDEPS += $$OUT_PWD/../../../Timer/timer/libtimer.a
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../../Parallel_structures/Parallel_stack/parallel_stack/release/ -lparallel_stack
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../../Parallel_structures/Parallel_stack/parallel_stack/debug/ -lparallel_stack
+else:unix: LIBS += -L$$OUT_PWD/../../../Parallel_structures/Parallel_stack/parallel_stack/ -lparallel_stack
+
+INCLUDEPATH += $$PWD/../../../Parallel_structures/Parallel_stack/parallel_stack
+DEPENDPATH += $$PWD/../../../Parallel_structures/Parallel_stack/parallel_stack
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../../Parallel_structures/Parallel_stack/parallel_stack/release/libparallel_stack.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../../Parallel_structures/Parallel_stack/parallel_stack/debug/libparallel_stack.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../../Parallel_structures/Parallel_stack/parallel_stack/release/parallel_stack.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../../Parallel_structures/Parallel_stack/parallel_stack/debug/parallel_stack.lib
+else:unix: PRE_TARGETDEPS += $$OUT_PWD/../../../Parallel_structures/Parallel_stack/parallel_stack/libparallel_stack.a

@@ -6,4 +6,5 @@ SUBDIRS += \
     User_system \
     Thread_system \
     Interval_system \
-    Level_system
+    Level_system \
+    GUI_system

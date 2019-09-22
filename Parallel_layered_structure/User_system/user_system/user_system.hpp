@@ -5,12 +5,13 @@
 template<typename... Args>
 class user_system;
 
-template<size_t LEVELS_NUM,
-        size_t ROUTABLES_NUM,
-        size_t ELEMENTS_NUM>
-class user_system<Work_system<LEVELS_NUM,ROUTABLES_NUM,ELEMENTS_NUM>>{
+template<size_t UP_NUM,
+        size_t MIDDLE_NUM,
+        size_t LOW_NUM,
+        size_t MOVABLE_NUM>
+class user_system<Work_system<UP_NUM,MIDDLE_NUM,LOW_NUM,MOVABLE_NUM>>{
 public:
-using WORK_SYSTEM = Work_system<LEVELS_NUM,ROUTABLES_NUM,ELEMENTS_NUM>;
+using WORK_SYSTEM = Work_system<UP_NUM,MIDDLE_NUM,LOW_NUM,MOVABLE_NUM>;
 using HANDLER_SYSTEM = handler_system<WORK_SYSTEM>;
     inline static unsigned TICKS_TO_QUIT = 0;
     inline static unsigned COUNTER = 0;

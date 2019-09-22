@@ -16,7 +16,7 @@ helper-класс для инициализации трехуровневой �
 класс предполагается использовать только на этапе инициализации сложной многоуровневой системы.
 
 */
-template<typename T, size_t UP_SIZE,size_t MIDDLE_SIZE,size_t LOW_SIZE,size_t MOVABLE_NUM>
+template<typename T, size_t UP_NUM,size_t MIDDLE_NUM,size_t LOW_NUM,size_t MOVABLE_NUM>
 class Interval_system
 {
     struct up_struct{
@@ -30,17 +30,20 @@ class Interval_system
     };
 
     struct middle_2d_interval{
-        unsigned id;
+        unsigned up_id;
+        unsigned middle_id;
         unsigned x;
         unsigned y;
         unsigned radius_x;
         unsigned radius_y;
-        middle_2d_interval(unsigned id_,
+        middle_2d_interval(unsigned up_id_,
+                            unsigned middle_id_,
                             unsigned movable_pos_x_,
                             unsigned movable_pos_y_,
                             unsigned movable_rad_x_,
                             unsigned movable_rad_y_):
-                            id(id_),
+                            up_id(up_id_),
+                            middle_id(middle_id_),
                             x(movable_pos_x_),
                             y(movable_pos_y_),
                             radius_x(movable_rad_x_),
@@ -70,7 +73,7 @@ class Interval_system
             }
             return checked;
         }
-        bool get_interval(unsigned id, middle_2d_interval &interval){
+        bool try_get_interval(unsigned id, middle_2d_interval &interval){
             auto iter = m_list.begin();
             bool found(false);
             while (!(iter==m_list.end()||found==true)) {
@@ -98,10 +101,10 @@ class Interval_system
         size_t m_width;
         size_t m_height;
     };
-    inline static std::array<up_struct, UP_SIZE> UP={};
-    inline static std::array<middle_struct, MIDDLE_SIZE> MIDDLE={};
-    inline static std::array<size_t, LOW_SIZE> LOW={};
-    std::array<middle_2d_interval_block,MIDDLE_SIZE> m_intervals={};
+    inline static std::array<up_struct, UP_NUM> UP={};
+    inline static std::array<middle_struct, MIDDLE_NUM> MIDDLE={};
+    inline static std::array<size_t, LOW_NUM> LOW={};
+    std::array<middle_2d_interval_block,MIDDLE_NUM> m_intervals={};
 
 public:
     Interval_system(){}
@@ -126,13 +129,13 @@ public:
         size_t middle_width;
         size_t middle_height;
         std::string string_iter;
-        while(!file.eof()||iterator_middle>LOW_SIZE){
+        while(!file.eof()||iterator_middle>LOW_NUM){
             getline(file,string_iter,' ');
             if(string_iter == "up"){
                 file>>up_id;
                 file>>up_interval;
-                if((iterator_up+up_interval)>=MIDDLE_SIZE){
-                    up_interval=MIDDLE_SIZE-iterator_up;//было -1
+                if((iterator_up+up_interval)>=MIDDLE_NUM){
+                    up_interval=MIDDLE_NUM-iterator_up;//было -1
                 }
                 UP.at(up_id).init(iterator_up,up_interval);
                 getline(file,string_iter);
@@ -142,8 +145,8 @@ public:
                 file>>middle_width;
                 file>>middle_height;
                 middle_interval+=(middle_width*middle_height);
-                if((iterator_middle+middle_interval)>=LOW_SIZE){
-                    middle_interval=LOW_SIZE-iterator_middle;//было -1
+                if((iterator_middle+middle_interval)>=LOW_NUM){
+                    middle_interval=LOW_NUM-iterator_middle;//было -1
                 }
                 MIDDLE.at(middle_id).init(iterator_middle,middle_interval,middle_width,middle_height);
                 getline(file,string_iter);
@@ -154,9 +157,16 @@ public:
                 file>>movable_pos_y;
                 file>>movable_rad_x;
                 file>>movable_rad_y;
-                middle_2d_interval candidate(movable_id, movable_pos_x,movable_pos_y,movable_rad_x,movable_rad_y);
-                m_intervals.at(middle_id).try_insert(candidate);
-                movable_id++;
+                middle_2d_interval candidate(up_id, middle_id, movable_pos_x,movable_pos_y,movable_rad_x,movable_rad_y);
+                if(m_intervals.at(middle_id).try_insert(candidate)){
+                    movable_id++;
+                }else{
+                    qDebug()<< "INVALID_INTERVAL movable_pos_x"
+                    << movable_pos_x
+                    << "movable_pos_y "<< movable_pos_y
+                    << "movable_rad_x "<< movable_rad_x
+                    << "movable_rad_y "<< movable_rad_y<< endl;
+                }
             }
         }
         qDebug()<< "Interval_system() initialized " << endl;
@@ -228,12 +238,11 @@ public:
         return result;
     }
 
-    middle_2d_interval get_middle_2d_interval(unsigned middle_id, unsigned movable_id){
-        middle_2d_interval result;
-        m_intervals.at(middle_id).get_interval(movable_id,result);
+    bool try_get_movable(unsigned middle_id_iterator,unsigned movable_id_iterator,middle_2d_interval &interval_data){
+        bool result(false);
+        result = m_intervals.at(middle_id_iterator).try_get_interval(movable_id_iterator,interval_data);
         return result;
     }
-
 };
 
 #endif // INTERVAL_SYSTEM_HPP

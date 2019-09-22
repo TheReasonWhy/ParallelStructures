@@ -21,10 +21,10 @@
 template<typename... Args>
 class Layered_data;
 
-template<typename T, size_t UP_SIZE,size_t MIDDLE_SIZE,size_t LOW_SIZE>
-class Layered_data<Interval_system<T,UP_SIZE,MIDDLE_SIZE,LOW_SIZE>>
+template<typename T, size_t UP_SIZE, size_t MIDDLE_SIZE, size_t LOW_SIZE, size_t MOVABLE_NUM>
+class Layered_data<Interval_system<T, UP_SIZE, MIDDLE_SIZE, LOW_SIZE, MOVABLE_NUM>>
 {
-    using INTERVAL_SYSTEM = Interval_system<T,UP_SIZE,MIDDLE_SIZE,LOW_SIZE>;
+    using INTERVAL_SYSTEM = Interval_system<T,UP_SIZE,MIDDLE_SIZE,LOW_SIZE, MOVABLE_NUM>;
     std::array<up_data, UP_SIZE> UP;
     std::array<middle_data, MIDDLE_SIZE> MIDDLE;
     std::array<low_data, LOW_SIZE> LOW;

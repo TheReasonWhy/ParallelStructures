@@ -11,14 +11,14 @@
 template<size_t LEVELS_NUM,
         size_t ROUTABLES_NUM,
         size_t ELEMENTS_NUM,
-        size_t MOVABLE_SIZE>
-class Work_system : public Level_system<LEVELS_NUM,ROUTABLES_NUM,ELEMENTS_NUM,MOVABLE_SIZE,Work_system>
+        size_t MOVABLE_NUM>
+class Work_system : public Level_system<LEVELS_NUM,ROUTABLES_NUM,ELEMENTS_NUM,MOVABLE_NUM,Work_system>
 
 {
 
 public:
 
-    using LEVEL_SYSTEM = Level_system<LEVELS_NUM,ROUTABLES_NUM,ELEMENTS_NUM,MOVABLE_SIZE,Work_system>;
+    using LEVEL_SYSTEM = Level_system<LEVELS_NUM,ROUTABLES_NUM,ELEMENTS_NUM,MOVABLE_NUM,Work_system>;
     using INTERVAL_SYSTEM = typename LEVEL_SYSTEM::INTERVAL_SYSTEM;
     using Middle_wrapper = typename LEVEL_SYSTEM::Middle_wrapper;
     using Low_wrapper = typename LEVEL_SYSTEM::Low_wrapper;

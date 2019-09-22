@@ -29,3 +29,29 @@ unix {
     target.path = /usr/lib
     INSTALLS += target
 }
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../Handler_system/handler_system/release/ -lhandler_system
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../Handler_system/handler_system/debug/ -lhandler_system
+else:unix: LIBS += -L$$OUT_PWD/../../Handler_system/handler_system/ -lhandler_system
+
+INCLUDEPATH += $$PWD/../../Handler_system/handler_system
+DEPENDPATH += $$PWD/../../Handler_system/handler_system
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../Handler_system/handler_system/release/libhandler_system.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../Handler_system/handler_system/debug/libhandler_system.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../Handler_system/handler_system/release/handler_system.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../Handler_system/handler_system/debug/handler_system.lib
+else:unix: PRE_TARGETDEPS += $$OUT_PWD/../../Handler_system/handler_system/libhandler_system.a
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../Level_system/level_system/release/ -llevel_system
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../Level_system/level_system/debug/ -llevel_system
+else:unix: LIBS += -L$$OUT_PWD/../../Level_system/level_system/ -llevel_system
+
+INCLUDEPATH += $$PWD/../../Level_system/level_system
+DEPENDPATH += $$PWD/../../Level_system/level_system
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../Level_system/level_system/release/liblevel_system.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../Level_system/level_system/debug/liblevel_system.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../Level_system/level_system/release/level_system.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$OUT_PWD/../../Level_system/level_system/debug/level_system.lib
+else:unix: PRE_TARGETDEPS += $$OUT_PWD/../../Level_system/level_system/liblevel_system.a
